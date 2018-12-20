@@ -3,20 +3,17 @@ import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CommentBox from 'components/CommentBox';
 import CommentList from 'components/CommentList';
+import { changeAuth } from 'actions';
 
 
 class App extends Component {
 
   renderButton(){
     if(this.props.auth){
-      return (
-        <button>Sign Out</button>
-      )
-    } 
-
-    return (
-      <button>Sign In</button>
-    )
+      return  <button onClick={() => this.props.changeAuth(false)}>Sign Out</button>
+    } else {
+      return <button onClick={() => this.props.changeAuth(true)}>Sign In</button>
+    }
   }
 
   renderHeader(){
@@ -44,4 +41,4 @@ const mapStateToProps = (state) => {
   return { auth: state.auth };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { changeAuth })(App);

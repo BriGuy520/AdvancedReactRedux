@@ -19,7 +19,7 @@ export const fetchComments = () => {
 
 export const changeAuth = (isLoggedIn) => {
   return {
-    action: CHANGE_AUTH,
+    type: CHANGE_AUTH,
     payload: isLoggedIn
   }
 }
